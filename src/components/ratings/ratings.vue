@@ -61,6 +61,7 @@ import split from '../../components/split/split';
 import ratingselect from '../../components/ratingselect/ratingselect';
 import star from '../../components/star/star';
 import { formatDate } from '../../common/js/date';
+import { rootUrl } from '../../common/api/helpers';
 
 // const POSITIVE = 0;
 // const NEGATIVE = 1;
@@ -86,7 +87,9 @@ export default {
     };
   },
   created () {
-    this.$http.get('/api/ratings').then((res) => {
+    let uri = '/api/ratings';
+    let url = rootUrl(uri);
+    this.$http.get(url).then((res) => {
       let response = res.body;
       // console.log(response);
       if (response.errno === ERR_OK) {

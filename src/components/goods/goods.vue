@@ -53,6 +53,7 @@ import BScroll from 'better-scroll';
 import shopCart from '../../components/cart/shopcart';
 import cartControl from '../../components/cartcontrol/cartcontrol';
 import food from '../../components/food/food';
+import { rootUrl } from '../../common/api/helpers';
 
 const ERR_OK = 0;
 export default {
@@ -69,7 +70,9 @@ export default {
   },
   created () {
     this.classMap = ['decrease', 'discount', 'special', 'invoice', 'guarantee'];
-    this.$http.get('/api/goods').then((res) => {
+    let uri = '/api/goods';
+    let url = rootUrl(uri);
+    this.$http.get(url).then((res) => {
       let response = res.body;
       if (response.errno === ERR_OK) {
         this.goods = response.data;

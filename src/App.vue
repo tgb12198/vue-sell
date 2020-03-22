@@ -21,6 +21,7 @@
 <script>
 import header from './components/header/header';
 import { urlPase } from './common/js/utils';
+import { rootUrl } from './common/api/helpers';
 
 const ERR_OK = 0;
 export default {
@@ -29,14 +30,17 @@ export default {
       seller: {
         id: (() => {
           let queryParam = urlPase();
-          // console.log(queryParam);
+          console.log(queryParam);
           return queryParam.id;
         })()
       }
     };
   },
   created () {
-    this.$http.get('/api/seller?id=' + this.seller.id).then((res) => {
+    let uri = '/api/seller?id=' + this.seller.id;
+    let url = rootUrl(uri);
+    // console.log(url);
+    this.$http.get(url).then((res) => {
       let response = res.body;
       if (response.errno === ERR_OK) {
         this.seller = Object.assign({}, this.seller, response.data);
