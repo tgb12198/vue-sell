@@ -87,7 +87,7 @@ export default {
     };
   },
   created () {
-    let uri = '/api/ratings';
+    let uri = '/api/ratings.json';
     let url = rootUrl(uri);
     this.$http.get(url).then((res) => {
       let response = res.body;
