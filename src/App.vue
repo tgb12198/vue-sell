@@ -37,7 +37,8 @@ export default {
     };
   },
   created () {
-    let uri = '/api/seller.json?id=' + this.seller.id === undefined ? 123456 : this.seller.id;
+    // let uri = '/api/seller?id=' + this.seller.id === undefined ? 123456 : this.seller.id;
+    let uri = '/api/seller.json';
     let url = rootUrl(uri);
     // console.log(url);
     this.$http.get(url).then((res) => {
