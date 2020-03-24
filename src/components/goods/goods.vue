@@ -71,7 +71,7 @@ export default {
   created () {
     this.classMap = ['decrease', 'discount', 'special', 'invoice', 'guarantee'];
     // let uri = '/api/goods';
-    let uri = '/buyer/product/list'
+    let uri = '/buyer/product/list';
     let url = rootUrl(uri);
     this.$http.get(url).then((res) => {
       let response = res.body;
